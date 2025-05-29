@@ -1,36 +1,67 @@
-# WhatsApp Platform Quick Start
+# WhatsApp Business Webhook – Node.js + Express
 
-Welcome to your first step toward building awesome WhatsApp apps!
+A lightweight WhatsApp Business Webhook built with Node.js and Express to handle incoming messages and respond dynamically using the WhatsApp Business Cloud API (Graph API). It supports text inputs, button replies, and message templates with document attachments.
 
-This project contains the code for a simple webhook you can use to get started using the WhatsApp Platform.
+## 🚀 Features
 
-The code here mirrors what is in our [webhook set up guide](https://developers.facebook.com/docs/whatsapp/cloud-api/guides/set-up-webhooks), and may be used as the starting point for doing the ["Get Started With the WhatsApp Business Cloud API guide"](https://developers.facebook.com/docs/whatsapp/getting-started/signing-up/).
+- Webhook verification endpoint for WhatsApp Business API
+- Real-time logging of incoming messages
+- Interactive button support (payload-based)
+- Text recognition and templated message replies
+- Document-based template messaging (PDF attachment support)
+- Stateful handling via in-memory user stage tracking
 
-## Additional Resources
+## 📦 Stack
 
-Interested in learning more about the WhatsApp Platform?
+- **Node.js** (v18+ recommended)
+- **Express**
+- **Graph API communication**
 
-Check out these resources:
+## 🔗 WhatsApp Business Configuration
+Set your webhook URL to https://<your-domain>/webhook
 
-- [**Webhook set up guide**](https://developers.facebook.com/docs/whatsapp/getting-started/signing-up/#configure-webhooks): The walkthrough for the code in this project.
+Use the WEBHOOK_VERIFY_TOKEN to verify during webhook setup
 
-- [**Quick start tutorial**](https://developers.facebook.com/docs/whatsapp/getting-started/signing-up/): Build your first app by remixing this project and following our quick start tutorial.
+Make sure your app has permissions:
 
-- [**WhatsApp Business Platform Documentation**](https://developers.facebook.com/docs/whatsapp/)
+whatsapp_business_messaging
 
+whatsapp_business_management
 
-## Environment Setup
+## 🧠 Message Handling Logic
+Text messages
 
-1. Create an account on Glitch to have access to all features mentioned here.
-2. Remix this project on Glitch.
-3. Click on the file `.env` on the left sidebar, and set these environment variables
+If contains "insurance" → sends a template with name + policy + date + PDF attachment
 
-- `WEBHOOK_VERIFY_TOKEN`: You can use any string and use the same when setting up the webhook in your app in the following steps.
-- `GRAPH_API_TOKEN`: You can get a **Temporary access token** from the dashboard of your app on **Meta for Developers** when you click **API Setup** under the **WhatsApp** section on the left navigation pane.
+Otherwise, sends a greeting offering insurance options
 
-4. Get the new Glitch URL to use as your webhook, eg: `https://project-name.glitch.me/webhook`. You can find the base URL by clicking on **Share** on top right in Glitch, copy the **Live Site** URL, then add `/webhook` to it.
-5. Subscribe the webhook URL in the dashboard of your app on **Meta for Developers**. Click the **Configuration** menu under **WhatsApp** in the left navigation pane.
-   In the **Webhook** section, click **Edit** and paste your webhook URL from the previous step. For the **Verify token** field, use the `VERIFY_TOKEN` value in your .env file, then click **Verify and save**.
-   Under the **Webhook fields** section click **Manage** and make sure **messages** field is selected.
-6. Edit `server.js` to change the webhook logic as needed.
-7. Click on the **Logs** tab at the bottom to view server logs. The logs section also has a button to attach a debugger via Chrome devtools.
+Button replies
+
+Payload: More Details → sends acknowledgment text
+
+Other payloads: echoes received payload
+
+## 📁 Project Structure
+
+├── server.js # Express app and webhook logic
+├── .env # Environment variables (not included)
+├── README.md
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in the project root with the following:
+
+```env
+PORT=3000
+WEBHOOK_VERIFY_TOKEN=your_webhook_token
+GRAPH_API_TOKEN=your_graph_api_token
+PHONE_NUMBER_ID=your_phone_number_id
+```
+
+## 📤 Testing
+You can test using:
+
+WhatsApp Sandbox or real business account
+
+Tools like ngrok for exposing localhost during dev
+
