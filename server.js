@@ -106,7 +106,7 @@ async function sendInsuranceTemplate(to) {
       type: "template",
       template: {
         name: "insurance",
-        language: { code: "en_US" },
+        language: { code: "en" },
         components: [
           {
             type: "body",
@@ -122,7 +122,7 @@ async function sendInsuranceTemplate(to) {
               {
                 type: "document",
                 document: {
-                  link: "https://cdn.glitch.global/32d5cfb6-211a-4511-ae4f-52130373692b/insurance.pdf?v=1748505800536",
+                  link: "https://cdn.glitch.global/32d5cfb6-211a-4511-ae4f-52130373692b/insurance.pdf?v=1748602004721",
                   filename: "insurance.pdf",
                 },
               },
