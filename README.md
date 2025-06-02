@@ -43,8 +43,8 @@ Other payloads: echoes received payload
 
 ## 📁 Project Structure
 
-├── server.js # Express app and webhook logic
-├── .env # Environment variables (not included)
+├── server.js # Express app and webhook logic  
+├── .env # Environment variables (not included)  
 ├── README.md
 
 ## ⚙️ Environment Variables
