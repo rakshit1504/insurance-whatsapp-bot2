@@ -66,8 +66,7 @@ WhatsApp Sandbox or real business account
 Tools like ngrok for exposing localhost during dev
 
 
-## 🧑‍💻 Author
-
+## 🧑‍💻 Author  
 Built by **Rakshit Bansal** — learning and exploring how APIs and messaging platforms connect, sending files as attachments in marketing templates.  
 Feel free to fork or suggest improvements!
 
